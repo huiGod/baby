@@ -1,0 +1,94 @@
+@charset "UTF-8";
+
+/*基础样式重置*/
+html,body,div,header,main,article,footer,section,aside,nav,hgroup,ul,li,h1,h2,h3,h4,dl,dt,dd,p,a,span,i,em,img,input,textarea{margin:0;padding:0;}
+header,main,article,footer,section,aside,nav{display:block;}
+
+/*添加安卓对H5新标签的支持*/
+html,body{font-family:"Microsoft yahei",Helvetica,Arial,sans-serif;}
+h1,h2,h3,h4,h5{font-weight:normal;}
+
+/*初始化标题加粗*/
+a,img,input{border:none 0;text-decoration:none;outline:none;}
+a:hover{text-decoration:none;}
+a:focus,input:focus{outline:0 none;}
+
+/*获取焦点时，不显示外框*/
+li{list-style:none;}
+i,em,cite{font-style:normal;}
+a{text-decoration:none;outline:none;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+span{-webkit-tap-highlight-color:rgba(0,0,0,0);}
+input,textarea,li{-webkit-tap-highlight-color:rgba(0,0,0,0);}
+
+/*消除点击高光*/
+textarea{resize:none;font-size:12px;outline:none 0;border:none 0;}
+
+/*去掉火狐和谷歌浏览器的Textarea改变尺寸大小功能*/
+textarea,input,button{-webkit-appearance:none;}
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder{color:#ddd;font-size:12px;}
+
+img{
+    display: block;
+}
+html,body{
+    height:100%;
+}
+
+/*ios10*/
+body{
+    background: #fff;
+    overflow: hidden;
+}
+.hd-ios10-bg{
+    width: 100%;
+}
+.hd-ios10{
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.4);
+}
+.hd-ios10 .hd-ios10-main{
+    width: 90%;
+    margin: 0 auto;
+    height:;
+    border-radius: 10px;
+    background: #fff;
+    margin-top: 30%;
+    position: relative;
+    padding:5px;
+}
+.hd-ios10 .hd-ios10-main img{
+    width: 100%;
+}
+.hd-ios10 .hd-ios10-main .hd-ios10-btn{
+    width: 70%;
+    height:40px;
+    line-height: 40px;
+    background: #2dbcfe;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 16px;
+    position: absolute;
+    left:50%;
+    bottom: 70px;
+    z-index: 3;
+    transform: translateX(-50%);
+}
+.swiper-pagination-bullet{
+    width: 6px;
+    height:6px;
+}
+.swiper-pagination-bullet-active{
+    background: #0b80ff;
+}
+@media screen and (max-width: 370px){
+    .hd-ios10 .hd-ios10-main .hd-ios10-btn{
+        height:30px;
+        line-height: 30px;
+        font-size: 14px;
+    }
+}

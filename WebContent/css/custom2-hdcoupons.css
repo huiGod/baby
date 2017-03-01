@@ -1,0 +1,310 @@
+@charset "UTF-8";
+
+/*基础样式重置*/
+html,body,div,header,main,article,footer,section,aside,nav,hgroup,ul,li,h1,h2,h3,h4,dl,dt,dd,p,a,span,i,em,img,input,textarea{margin:0;padding:0;}
+header,main,article,footer,section,aside,nav{display:block;}
+
+/*添加安卓对H5新标签的支持*/
+html,body{font-family:"Microsoft yahei",Helvetica,Arial,sans-serif;}
+h1,h2,h3,h4,h5{font-weight:normal;}
+
+/*初始化标题加粗*/
+a,img,input{border:none 0;text-decoration:none;outline:none;}
+a:hover{text-decoration:none;}
+a:focus,input:focus{outline:0 none;}
+
+/*获取焦点时，不显示外框*/
+li{list-style:none;}
+i,em,cite{font-style:normal;}
+a{text-decoration:none;outline:none;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+span{-webkit-tap-highlight-color:rgba(0,0,0,0);}
+input,textarea,li{-webkit-tap-highlight-color:rgba(0,0,0,0);}
+
+/*消除点击高光*/
+textarea{resize:none;font-size:12px;outline:none 0;border:none 0;}
+
+/*去掉火狐和谷歌浏览器的Textarea改变尺寸大小功能*/
+textarea,input,button{-webkit-appearance:none;}
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder{color:#ddd;font-size:12px;}
+
+img{
+    display: block;
+}
+html,body{
+    height:100%;
+}
+/*我的优惠券页面*/
+.hd-getCoupons{
+    padding:0 10px;
+    overflow: hidden;
+    padding-bottom: 30px;
+}
+.hd-getCoupons img{
+    width: 100%;
+}
+.hd-moreCoupons{
+    display: block;
+    margin-top: 15px;
+    border:1px solid #c9c9c9;
+    color: #ff5151;
+    height:43px;
+    line-height: 43px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 16px;
+
+}
+.hd-myCoupons{
+
+}
+.hd-myCoupons .hd-couponY{
+    margin-top: 15px;
+    position: relative;
+}
+.hd-couponAmount{
+    position: absolute;
+    top:10%;
+    left:30px;
+    color: #ff9c00;
+}
+.hd-couponAmount i{
+    font-size: 24px;
+}
+.hd-couponAmount span{
+    font-size: 36px;
+}
+
+.hd-couponText{
+    position: absolute;
+    bottom:10%;
+    left:30px;
+    color: #666666;
+    font-size: 12px;
+}
+.hd-couponText i{
+    display: inline-block;
+    width: 6px;
+    height:6px;
+    border-radius: 50%;
+    background: #666666;
+}
+
+.hd-myCoupons .hd-couponR{
+    margin-top: 15px;
+    position: relative;
+}
+.hd-myCoupons .hd-couponR .hd-couponText{
+    bottom:20%;
+}
+.hd-loseCoupons{
+    margin-top: 10px;
+    overflow: hidden;
+
+}
+.hd-loseCoupon{
+    margin-top: 15px;
+    position: relative;
+}
+.hd-loseCoupon .hd-couponAmount,.hd-loseCoupons .hd-couponText{
+    color: #d5d5d5;
+}
+.hd-loseCoupon .hd-couponText i{
+    background: #d5d5d5;
+}
+
+.hd-coupontitle{
+    color: #ababab;
+    font-size: 12px;
+    margin-top: 30px;
+    line-height: 1.5;
+}
+.hd-loseline{
+    width: 80%;
+    height:1px;
+    margin: 0 auto;
+    background: #d5d5d5;
+    margin-top: 40px;
+    position: relative;
+
+}
+.hd-loseline span{
+    font-size: 14px;
+    color: #d5d5d5;
+    padding:0 10px;
+    background: #ffffff;
+    position: absolute;
+    top:-10px;
+    left:50%;
+    transform: translateX(-50%);
+}
+
+
+/*没有优惠券*/
+.hd-noCoupons{
+    width: 100%;
+    background: #fff;
+    text-align: center;
+    height:90vh;
+    position: relative;
+    display: none;
+}
+.hd-noCoupons img{
+    display: inline-block;
+   width: 110px;
+    height:110px;
+    margin-top: 100px;
+}
+.hd-noCoupons span{
+    display: block;
+    color: #505050;
+    font-size: 14px;
+
+}
+.hd-noCoupons .hd-coupontitle{
+    display: block;
+    text-align: left;
+    width: 276px;
+    position: absolute;
+    bottom: 50px;
+    left:50%;
+    /*transform: translateX(-50%);*/
+    margin-left: -138px;
+}
+
+
+/*兑换代金券页面*/
+.hd-exchangeticket{
+    padding:0 10px;
+    overflow: hidden;
+    padding-bottom: 30px;
+}
+.hd-exchangeticket .hd-enableCoupons{
+    height:40px;
+    border:1px solid #c9c9c9;
+    margin-top: 15px;
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 62px;
+    position: relative;
+
+}
+.hd-exchangeticket .hd-enableCoupons input{
+    height:40px;
+    line-height: 40px;
+    text-align: center;
+    width: 100%;
+}
+
+.hd-exchangeticket .hd-enableCoupons .hd-enableBtn{
+    width: 62px;
+    height:40px;
+    line-height: 40px;
+    background: #ff5151;
+    text-align: center;
+    outline: 0;
+    border:0;
+    padding:0;
+    position: absolute;
+    top:0;
+    right: 0;
+    color: #fff;
+    font-size: 14px;
+}
+.hd-exchange{
+
+}
+.hd-exchange .hd-exchangeItem{
+    position: relative;
+    margin-top: 15px;
+}
+.hd-exchange .hd-exchangeItem img{
+    width: 100%;
+}
+.hd-exchangePrice{
+    position: absolute;
+    top:8%;
+    left:30px;
+    color: #ff5151;
+}
+.hd-exchangePrice i{
+    font-size: 30px;
+}
+.hd-exchangePrice span{
+    font-size: 46px;
+}
+.hd-exchangeAbout{
+    position: absolute;
+    bottom: 15%;
+    left:35px;
+    color: #666666;
+    font-size: 16px;
+}
+.hd-exchangeAbout i{
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #666666;
+}
+.hd-exchangeMoney{
+    width: 23vw;
+    position: absolute;
+    right:0;
+    bottom: 20%;
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+}
+
+
+/*弹窗*/
+.hd-popup1{
+    display: none;
+}
+.hd-popup2{
+    display: none;
+}
+
+.hd-popup{
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom: 0;
+    background: rgba(0,0,0,.4);
+    font-size: 18px;
+
+}
+.hd-popup .hd-popupText{
+    width: 80%;
+    height:150px;
+    margin: 0 auto;
+    margin-top: 50%;
+    background: #fff;
+    border-radius: 5px;
+}
+.hd-popup .hd-popupText .p-top{
+    height:69px;
+    padding-top:30px;
+    text-align: center;
+    color: #666;
+    border-bottom: 1px solid #dbdbdb;
+}
+.hd-popup .hd-popupText .p-btn{
+    height:50px;
+    line-height:50px;
+    text-align: center;
+
+}
+.hd-popup .hd-popupText .p-btnNo{
+    float: left;
+    width: 50%;
+    border-right:1px solid #dbdbdb ;
+    box-sizing: border-box;
+    color: #b4b4b4;
+}
+.hd-popup .hd-popupText .p-btnYes{
+    float: left;
+    width: 50%;
+    color: #ff5151;
+}

@@ -1,0 +1,102 @@
+@charset "UTF-8";
+/*基础样式重置*/
+html,body,div,header,article,footer,section,aside,nav,hgroup,ul,ol,li,h1,h2,h3,h4,h5,h6,dl,dt,dd,p,a,span,i,em,strong,b,img,input,textarea { margin:0; padding:0;}
+header,article,footer,section,aside,nav,hgroup{display: block;}
+html{font-size:10px}/*移动端用响应式单位：rem vw*/
+@media screen and (min-width:321px) and (max-width:375px){html{font-size:11px}}
+@media screen and (min-width:376px) and (max-width:414px){html{font-size:12px}}
+@media screen and (min-width:415px) and (max-width:639px){html{font-size:15px}}
+@media screen and (min-width:640px) and (max-width:719px){html{font-size:20px}}
+html,body { font-family:"Microsoft yahei",Helvetica, Arial, sans-serif; }
+h1,h2,h3,h4,h5{font-weight:normal;}  /*初始化标题加粗*/
+a,img,input{ border:none 0; text-decoration:none;outline:none; }
+a:hover { text-decoration:none; }
+a:focus,input:focus { outline:0 none;} /*获取焦点时，不显示外框*/
+li { list-style:none; }
+i,em,cite { font-style:normal;}
+a { text-decoration:none; outline:none; -webkit-tap-highlight-color:rgba(0,0,0,0); }
+input,textarea,li{-webkit-tap-highlight-color:rgba(0,0,0,0); }/*消除点击高光*/
+textarea { resize:none; font-size:12px;outline: none 0;border:none 0; } /*去掉火狐和谷歌浏览器的Textarea改变尺寸大小功能*/
+input[type="button"], input[type="submit"], input[type="reset"],input[type="text"],textarea {-webkit-appearance: none;} /*新增input[type="text"]*/
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder{color:#969696;font-size:1.2rem;}/*定义placeholder字体样式*/
+.pos-rel{position: relative;}
+body{padding:0px 10px 20px;}
+.text-center{text-align: center}
+.headerTop{height:1.8rem;line-height: 1.8rem;position: relative;font-weight:700;font-family: "Microsoft yahei";-webkit-font-smoothing:antialiased;}
+.back{color:#348cef;padding-left:2rem;background:url(../images/left.png) no-repeat ;background-size: contain;font-size:1.6rem;display: inline-block;}
+.band-nav{z-index:-1;position: absolute;top:0;left:0;width:100%;height:100%;font-size:1.7rem;}
+.box{border:1px dashed #f00;margin:30px auto 10px;line-height:4rem;background-color: #ffb2b2;width:40vw;font-size:1.7rem;color:#000;font-weight: 700;}
+.upIcon-box,.copy-tips{display: block;width:100%;}
+.upIcon-box img{width:20px;}
+.copy-tips{font-size:1.2rem;color:#646464;}
+.input-box{width:85%;margin:20px auto 15px;}
+.input-box input{box-sizing:border-box;width:100%;line-height: 1.4rem;font-size:1.2rem;color:#000;border:1px solid #eaeaea;border-radius:5px;padding:15px;}
+.bindBtn{outline:none;border:none;margin:0 auto;background-color:#3497e4;border-radius: 5px;color:#fff;text-align:center;font-size:1.4rem;line-height: 4rem;width:80%;}
+.articleHeader{margin:20px 0 15px;line-height: 2rem;font-size: 1.2rem;color:#323232;text-align:left;}
+.qrcode-box{width:100%;}
+.qrcode-box img{width:60%;}
+.focus-tips{font-size: 1.2rem;color:#646464;margin:10px 0 30px;}
+.guidePic-box,.guidePic-box img{width:100%;}
+
+.changeBg{-webkit-animation: hue 60s infinite linear;animation: hue 60s infinite linear;}
+@-webkit-keyframes hue{
+	from{-webkit-filter:hue-rotate(0deg);}
+	to{-webkit-filter:hue-rotate(-360deg);}
+}
+.moveIconUp{-webkit-animation:moveIconUp ease 1.5s both infinite;animation:moveIconUp ease 1.5s both infinite;}
+@-webkit-keyframes moveIconUp{
+	0%{-webkit-transform:translateY(100%);opacity:0;}
+	50%{-webkit-transform:translateY(0%);opacity:1;}
+	100%{-webkit-transform:translateY(-100%);opacity:0;}
+}
+@keyframes moveIconUp{
+	0%{-webkit-transform:translateY(100%);transform:translateY(100%);opacity:0;}
+	50%{-webkit-transform:translateY(0%);transform:translateY(0%);opacity:1;}
+	100%{-webkit-transform:translateY(-100%);transform:translateY(-100%);opacity:0;}
+}
+
+
+
+/*开始赚钱页面*/
+.hide{display: none;}
+.clearfix:after { content:" "; display:block; clear:both; height:0; }
+.clearfix {zoom:1;}
+.fl { float:left; }
+.fr { float:right; }
+body.earnMoney{padding:0;background-color: #59dcb2;font-family: "Microsoft yahei";position: absolute;height:100%;}
+.bannerBg{width:100%;}
+.earnMoneyBtn{box-shadow:0 0 3px #083e4a;text-shadow:0px 0px 1px #ebe539;outline:none 0;border:none 0;width:65%;position:absolute;top:80%;left:50%;margin-left:-32.5%;background-color: #083e4a;color:#ebe539;line-height: 3rem;font-size: 1.4rem;border-radius: 5px;}
+.mask{position: fixed;top:0;right:0;bottom:0;left:0;background:rgba(0,0,0,.7);}
+.pop{background-color:#fff;position: absolute;top:20%;left:10%;width:80%;padding:22px;box-sizing: border-box;}
+.pop-head{font-size: 2.1rem;color:#000;font-weight:700;line-height: 2.4rem;}
+.pop-p{font-size: 1.4rem;color:#646464;line-height: 2.5rem;}
+.logoImg-box{display: inline-block;width:34.5vw;text-align:right;}
+.logoImg-box img{width:25vw;}
+.earnMoneyTips{font-size:1.6rem;color:#000;line-height: 2.8rem;margin-top:5px;}
+.DownloadLink-Box{display: block;width:4.5rem;position:absolute;bottom:5px;left:0;}
+.DownloadLink-Box img{width:100%;}
+.jihuo,.goToGet{width:100%;line-height: 4rem;font-size:1.5rem;text-align:center;letter-spacing: 1px;border-radius: 5px;outline:none 0;}
+.goToGet{background-color: #3497e4;color:#fff;border:none 0;margin:35px 0 18px 0;}
+.jihuo{border:1px solid #f00;color:#f00;background-color:#fff;line-height: 3.8rem;}
+.earnMoney-wrap{margin-top:16px;}
+.earnMoneyTips-Box{margin-left:1.5rem;height:25vw;}
+.close-box{position: absolute;right:0px;top:0px;padding:16px;}
+.close-box img{width:14px;}
+.useBrowserOpen{position:fixed;width:100%;height:100%;top:0;left:0;}
+.useBrowserOpen img{width:100%;}
+.heartskip{-webkit-animation: heartskip .83s infinite ease-in-out;animation: heartskip .83s infinite ease-in-out;}
+@-webkit-keyframes heartskip{
+	from{opacity:0.5;}
+	50%{opacity:1;}
+	to{opacity:0.5;}
+}
+.bandWX-body{background:#f7f9f9;padding:0;}
+.fff{background-color:#fff;}
+.headerTop{padding:1rem 0;}
+.band-nav{line-height:3.7rem;z-index:0; }
+.back{margin-left:10px;}
+.section1,.section3,.guidePic-box{padding:10px 0;margin-top:10px;}
+.section3{padding-top:15px;}
+.section2{padding:5px 0;}
+.focus-tips{margin-bottom:0;}
+.articleHeader{margin:0;}

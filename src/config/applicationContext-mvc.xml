@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:task="http://www.springframework.org/schema/task" 
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+	http://www.springframework.org/schema/task  http://www.springframework.org/schema/task/spring-task-3.1.xsd 
+	">
+
+	<context:component-scan base-package="cn._51app.scheduled"> 
+	</context:component-scan>
+	
+	
+	<!-- 定时器配置 
+    task:executor/@pool-size：可以指定执行线程池的初始大小、最大大小 
+    task:executor/@queue-capacity：等待执行的任务队列的容量 
+    task:executor/@rejection-policy：当等待队已满时的策略，分为丢弃、由任务执行器直接运行等方式
+  	-->
+	<task:scheduler id="scheduler" pool-size="10" />  
+    <task:executor id="executor" keep-alive="3600" pool-size="100-200" 
+    queue-capacity="500" rejection-policy="CALLER_RUNS" /> 
+    <task:annotation-driven executor="executor" scheduler="scheduler" />
+	<!-- 开启springmvc注释 -->
+	<mvc:annotation-driven>
+	
+	</mvc:annotation-driven>
+	<!-- 开启spring注释 -->
+	<context:component-scan base-package="cn._51app.controller" />
+	
+	
+	<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+			<!--  			
+			<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />			
+			-->
+			<property name="prefix" value="/WEB-INF/mobile/"/>
+			<property name="suffix" value=".jsp" />
+  	</bean>
+  	
+  	<bean id="multipartResolver"  
+	    class="org.springframework.web.multipart.commons.CommonsMultipartResolver" >  
+	    <property name="defaultEncoding" value="UTF-8"/> 
+	    <property name="maxInMemorySize" value="102400"/> 
+	    <property name="uploadTempDir" value="/temp/"/>
+	    <property name="maxUploadSize" value="-1"/>  
+	</bean>
+</beans>

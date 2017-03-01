@@ -1,0 +1,24 @@
+@charset "UTF-8";
+/*基础样式重置*/
+html,body,div,header,article,footer,section,aside,nav,hgroup,ul,ol,li,h1,h2,h3,h4,h5,h6,dl,dt,dd,p,a,span,i,em,strong,b,img,input,textarea { margin:0; padding:0;}
+header,article,footer,section,aside,nav,hgroup{display: block;}
+html{font-size:10px}/*移动端用响应式单位：rem vw*/
+@media screen and (min-width:321px) and (max-width:375px){html{font-size:11px}}
+@media screen and (min-width:376px) and (max-width:414px){html{font-size:12px}}
+@media screen and (min-width:415px) and (max-width:639px){html{font-size:15px}}
+@media screen and (min-width:640px) and (max-width:719px){html{font-size:20px}}
+html,body { font-family:"Microsoft yahei",Helvetica, Arial, sans-serif; }
+h1,h2,h3,h4,h5{font-weight:normal;}  /*初始化标题加粗*/
+li { list-style:none; }
+i,em,cite { font-style:normal;}
+.bold{font-weight:bold;}
+.padding10{padding:0 10px;font-family: "Microsoft yahei";font-size:1.3rem;line-height: 2rem;}
+.headFont{font-size:1.5rem;line-height: 2.3rem;}
+.articles{padding:30px 0 10px;}
+
+p {
+    text-align: justify;
+   /* -ms-text-justify: inter-ideograph;
+    text-justify: inter-ideograph;
+    text-spacing: ideograph-alpha;*/
+}

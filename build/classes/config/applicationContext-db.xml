@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd
+    http://www.springframework.org/schema/task
+    http://www.springframework.org/schema/task/spring-task-3.0.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+    http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+    
+    <!-- c3p0数据源 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${jdbc.driver}"/>
+		<property name="jdbcUrl" value="${jdbc.url}"/>
+		<property name="user" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}"/>
+		<property name="initialPoolSize" value="${jdbc.initialPoolSize}" />
+		<property name="minPoolSize" value="${jdbc.minPoolSize}" />
+		<property name="maxPoolSize" value="${jdbc.maxPoolSize}" />
+		<property name="loginTimeout" value="${jdbc.loginTimeout}" />
+		<property name="maxIdleTime" value="${jdbc.maxIdleTime}" />
+		<property name="idleConnectionTestPeriod" value="${jdbc.idleConnectionTestPeriod}" />
+		<property name="maxStatements" value="${jdbc.maxStatements}" />
+		<property name="maxStatementsPerConnection" value="${jdbc.maxStatementsPerConnection}" />
+		<property name="numHelperThreads" value="${jdbc.numHelperThreads}" />
+	</bean>
+	
+	<!-- c3p0统计数据源 -->
+	<bean id="statsDB" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${jdbc.sdriver}"/>
+		<property name="jdbcUrl" value="${jdbc.surl}"/>
+		<property name="user" value="${jdbc.susername}"/>
+		<property name="password" value="${jdbc.spassword}"/>
+		<property name="initialPoolSize" value="${jdbc.sinitialPoolSize}" />
+		<property name="minPoolSize" value="${jdbc.sminPoolSize}" />
+		<property name="maxPoolSize" value="${jdbc.smaxPoolSize}" />
+		<property name="loginTimeout" value="${jdbc.sloginTimeout}" />
+		<property name="maxIdleTime" value="${jdbc.smaxIdleTime}" />
+		<property name="idleConnectionTestPeriod" value="${jdbc.sidleConnectionTestPeriod}" />
+		<property name="maxStatements" value="${jdbc.smaxStatements}" />
+		<property name="maxStatementsPerConnection" value="${jdbc.smaxStatementsPerConnection}" />
+		<property name="numHelperThreads" value="${jdbc.snumHelperThreads}" />
+	</bean>
+	
+	<!-- diy数据源 -->
+	<bean id="diyDB" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${jdbc.adriver}"/>
+		<property name="jdbcUrl" value="${jdbc.aurl}"/>
+		<property name="user" value="${jdbc.ausername}"/>
+		<property name="password" value="${jdbc.apassword}"/>
+		<property name="initialPoolSize" value="${jdbc.ainitialPoolSize}" />
+		<property name="minPoolSize" value="${jdbc.aminPoolSize}" />
+		<property name="maxPoolSize" value="${jdbc.amaxPoolSize}" />
+		<property name="loginTimeout" value="${jdbc.aloginTimeout}" />
+		<property name="maxIdleTime" value="${jdbc.amaxIdleTime}" />
+		<property name="idleConnectionTestPeriod" value="${jdbc.aidleConnectionTestPeriod}" />
+		<property name="maxStatements" value="${jdbc.amaxStatements}" />
+		<property name="maxStatementsPerConnection" value="${jdbc.amaxStatementsPerConnection}" />
+		<property name="numHelperThreads" value="${jdbc.anumHelperThreads}" />
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- 开启事务注释 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+
+	<!-- jdbcTemplate -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+    
+    <!-- statsTemplate -->
+	<bean id="statsTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="statsDB" />
+	</bean>
+	
+	<!-- statsTemplate -->
+	<bean id="diyTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="diyDB" />
+	</bean>
+	
+	<bean id="npjt"
+        class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate" abstract="false"
+        lazy-init="false" autowire="default" >
+        <constructor-arg ref="diyDB" /> 
+	</bean>
+    
+    <bean name="ocsServer" class="java.net.InetSocketAddress">
+	    <constructor-arg>
+	      <value>${ocs.host}</value>
+	    </constructor-arg>
+	    <constructor-arg>
+	      <value>${ocs.port}</value>
+	    </constructor-arg>
+	</bean>
+    <bean name="ocsClient" class="net.rubyeye.xmemcached.utils.XMemcachedClientFactoryBean">
+        <property name="servers">
+            <value>${ocs.host}:${ocs.port}</value>
+        </property>
+        <property name="authInfoMap">
+	      <map>
+	        <entry key-ref="ocsServer">
+	          <bean class="net.rubyeye.xmemcached.auth.AuthInfo"
+	            factory-method="plain">
+	            <constructor-arg>
+	              <value>${ocs.username}</value>
+	            </constructor-arg>
+	            <constructor-arg>
+	              <value>${ocs.password}</value>
+	            </constructor-arg>
+	          </bean>
+	        </entry>
+	      </map>
+	    </property>
+        <property name="connectionPoolSize" value="${ocs.connectionPoolSize}"></property>
+        <!-- Use binary protocol,default is TextCommandFactory -->
+        <property name="commandFactory">
+            <bean class="net.rubyeye.xmemcached.command.BinaryCommandFactory"></bean>
+        </property>
+        <!-- Distributed strategy -->
+        <property name="sessionLocator">
+            <bean class="net.rubyeye.xmemcached.impl.KetamaMemcachedSessionLocator"></bean>
+        </property>
+        <!-- Serializing transcoder -->
+        <property name="transcoder">
+            <bean class="net.rubyeye.xmemcached.transcoders.SerializingTranscoder"/>
+        </property>
+        <!-- ByteBuffer allocator -->
+        <property name="bufferAllocator">
+            <bean class="net.rubyeye.xmemcached.buffer.SimpleBufferAllocator"></bean>
+        </property>
+    </bean>
+</beans>
